@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
 
+    GameObject BackgroundMusic; // 배경음악 오브젝트
+    AudioSource backmusic; // 배경음악 컴포넌트
+
     private int score = 0; // 게임 점수
 
     // 게임 시작과 동시에 싱글톤을 구성
@@ -58,5 +61,9 @@ public class GameManager : MonoBehaviour {
         isGameover = true;
         //게임오버 UI를 활성화
         gameoverUI.SetActive(true);
+
+        BackgroundMusic = GameObject.Find("music"); // music 이름의 오브젝트 넣기
+        backmusic = BackgroundMusic.GetComponent<AudioSource>(); // music의 오디오 소스 넣기
+        backmusic.Pause();
     }
 }
